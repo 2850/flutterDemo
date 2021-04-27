@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   return runApp(MaterialApp(
-    home: new Homepage2(),
+    home: new MyText(),
   ));
 }
 
@@ -73,5 +73,25 @@ class Homepage2State extends State<Homepage2> {
   Color getColor() {
     return Color.fromARGB((Random().nextInt(255)), Random().nextInt(255),
         Random().nextInt(255), Random().nextInt(255));
+  }
+}
+
+class MyText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Text Demo'),
+        ),
+        body: Row(
+          children: [
+            Text('Demo',
+                style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.green,
+                    fontStyle: FontStyle.italic)),
+          ],
+        ));
   }
 }
