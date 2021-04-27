@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   return runApp(MaterialApp(
-    home: new MyText(),
+    home: new MyContainer(),
   ));
 }
 
@@ -93,5 +93,33 @@ class MyText extends StatelessWidget {
                     fontStyle: FontStyle.italic)),
           ],
         ));
+  }
+}
+
+class MyContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Container Demo'),
+      ),
+      body: Row(
+        children: [
+          Text(
+            'Demo',
+            style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.w900,
+                color: Colors.blue),
+          ),
+          Container(
+            // 注意：Container 會繼承Parent的長寬，如果沒有Parent，就直接吃裡面的，例如Text
+            color: Colors.red,
+            width: 10.0, // 這邊Container 繼承Row的高度 如果body是Row
+            height: 20.0, // 如果這邊有指定，就直接吃指定的，Column同理(吃width)
+          )
+        ],
+      ),
+    );
   }
 }
