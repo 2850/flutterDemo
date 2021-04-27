@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   return runApp(MaterialApp(
@@ -99,27 +100,38 @@ class MyText extends StatelessWidget {
 class MyContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // debugPaintSizeEnabled = true;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Container Demo'),
-      ),
-      body: Row(
-        children: [
-          Text(
-            'Demo',
-            style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w900,
-                color: Colors.blue),
-          ),
-          Container(
-            // 注意：Container 會繼承Parent的長寬，如果沒有Parent，就直接吃裡面的，例如Text
-            color: Colors.red,
-            width: 10.0, // 這邊Container 繼承Row的高度 如果body是Row
-            height: 20.0, // 如果這邊有指定，就直接吃指定的，Column同理(吃width)
-          )
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Container Demo'),
+        ),
+        // body: Row(
+        //   children: [
+        //     Text(
+        //       'Demo',
+        //       style: TextStyle(
+        //           fontSize: 20.0,
+        //           fontWeight: FontWeight.w900,
+        //           color: Colors.blue),
+        //     ),
+        //     Container(
+        //       // 注意：Container 會繼承Parent的長寬，如果沒有Parent，就直接吃裡面的，例如Text
+        //       color: Colors.red,
+        //       width: 10.0, // 這邊Container 繼承Row的高度 如果body是Row
+        //       height: 20.0, // 如果這邊有指定，就直接吃指定的，Column同理(吃width)
+        //     )
+        //   ],
+        // ),
+        body: Container(
+            child: Text('My Container Demo'),
+            // width: 200.0,
+            // height: 180.0,
+            padding: EdgeInsets.only(left: 10.0, top: 10.0),
+            margin: EdgeInsets.all(10.0),
+            // color: Colors.brown, // 使用decoration color就不能使用，要在decoration內用
+            decoration: BoxDecoration(
+              color: Colors.greenAccent,
+              borderRadius: BorderRadius.circular(20.0),
+            )));
   }
 }
